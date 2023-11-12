@@ -12,7 +12,7 @@ Comment.init({
     body: {
         type: DataTypes.STRING,
         validate: {
-            len: [10]
+            len: [5]
         }
     },
     user_id: {
