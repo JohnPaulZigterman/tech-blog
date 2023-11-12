@@ -9,13 +9,21 @@ Comment.init({
         primaryKey: true,
         autoIncrement: true
     },
-    body: {
+    content: {
         type: DataTypes.STRING,
         validate: {
             len: [5]
         }
     },
     user_id: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        references: {
+            model: 'user',
+            key: 'id'
+        }
+    },
+    post_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {

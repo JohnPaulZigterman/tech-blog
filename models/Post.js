@@ -14,11 +14,11 @@ Post.init({
         type: DataTypes.STRING,
         allowNull: false
     },
-    body: {
-        type: DataTypes.INTEGER,
-        references: {
-            model: 'user',
-            key: 'id'
+    content: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+            len: [10]
         }
     },
     user_id: {
