@@ -63,10 +63,12 @@ router.post('/login', (req, res) => {
             res.status(404).json({ message: 'No user in database with that name!'});
             return;
         }
-        if (!userData.passCheck(req.body.password)) {
-            res.status(400).json({ message: 'Invalid Password!' });
+        const validPass = userData.passCheck(req.body.password);
+        if (!validPass) {
+            res.status(400).json({ message: `Invalid Password! ${req.body.password}` });
             return;
         }
+        console.log(validPass);
         req.session.save(() => {
             req.session.loggedIn = true;
             req.session.name = userData.name;
